@@ -14,26 +14,7 @@ let Toolbar = React.createClass({
 
     return (
       <div className='rbc-toolbar'>
-        <span className='rbc-btn-group'>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.TODAY)}
-          >
-            {messages.today}
-          </button>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
-          >
-            {messages.previous}
-          </button>
-          <button
-            type='button'
-            onClick={this.navigate.bind(null, navigate.NEXT)}
-          >
-            {messages.next}
-          </button>
-        </span>
+        {this.props.newEventButton ? this.props.newEventButton : null}
 
         <span className='rbc-toolbar-label'>
           { label }
@@ -50,6 +31,27 @@ let Toolbar = React.createClass({
               </button>
             )
           }
+        </span>
+
+        <span className='rbc-btn-group'>
+          <button
+            type='button'
+            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+          >
+            {messages.previous}
+          </button>
+          <button
+            type='button'
+            onClick={this.navigate.bind(null, navigate.TODAY)}
+          >
+            {messages.today}
+          </button>
+          <button
+            type='button'
+            onClick={this.navigate.bind(null, navigate.NEXT)}
+          >
+            {messages.next}
+          </button>
         </span>
       </div>
     );

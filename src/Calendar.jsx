@@ -222,7 +222,9 @@ let Calendar = React.createClass({
       day: PropTypes.string,
       agenda: PropTypes.string,
       showMore: PropTypes.func
-    })
+    }),
+
+    newEventButton: PropTypes.node
   },
 
   getDefaultProps() {
@@ -273,6 +275,8 @@ let Calendar = React.createClass({
             date={current}
             view={view}
             views={names}
+            newEventButton={this.props.newEventButton}
+            messages={this.props.messages}
             label={viewLabel(current, view, formats, culture)}
             onViewChange={this._view}
             onNavigate={this._navigate}

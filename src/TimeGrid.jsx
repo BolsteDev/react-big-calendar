@@ -93,7 +93,7 @@ let TimeGrid = React.createClass({
     let { levels } = eventLevels(segments)
 
     return (
-      <div className='rbc-time-view'>
+      <div className={`rbc-time-view ${this.props.className}`}>
         <div ref='headerCell' className='rbc-time-header'>
           <div className='rbc-row'>
             <div ref={addGutterRef(0)} className='rbc-gutter-cell'/>

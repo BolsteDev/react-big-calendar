@@ -14,7 +14,7 @@ let Week = React.createClass({
     let { start, end } = Week.range(date, this.props)
 
     return (
-      <TimeGrid {...this.props} start={start} end={end} eventOffset={15}/>
+      <TimeGrid {...this.props} className='rbc-week-view' start={start} end={end} eventOffset={15}/>
     );
   }
 

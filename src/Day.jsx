@@ -12,7 +12,7 @@ let Day = React.createClass({
     let { start, end } = Day.range(date)
 
     return (
-      <TimeGrid {...this.props} start={start} end={end} eventOffset={10}/>
+      <TimeGrid {...this.props} className='rbc-day-view' start={start} end={end} eventOffset={10}/>
     );
   }
 });

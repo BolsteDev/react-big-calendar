@@ -1,3 +1,35 @@
+v0.9.4 - Sun, 29 Nov 2015 02:19:49 GMT
+--------------------------------------
+
+- [a41c9f9](../../commit/a41c9f9) [added] right-to-left support
+- [8bb6589](../../commit/8bb6589) [fixed] properly select time ranges with min/max set
+
+
+
+v0.9.3 - Sat, 28 Nov 2015 20:00:24 GMT
+--------------------------------------
+
+- [fff1914](../../commit/fff1914) [fixed] pass culture to View
+
+
+
+v0.9.2 - Thu, 12 Nov 2015 23:34:33 GMT
+--------------------------------------
+
+- [58f008f](../../commit/58f008f) [fixed] none integer slot spaces (again)
+- [f2084ef](../../commit/f2084ef) [fixed] month event rows not fitting in their cells
+- [73e449d](../../commit/73e449d) [fixed] day view clicks return the correct slot
+
+
+
+v0.9.1 - Thu, 12 Nov 2015 14:52:20 GMT
+--------------------------------------
+
+- [d5a0d20](../../commit/d5a0d20) [fixed] month event rows not fitting in their cells
+- [f4b18d6](../../commit/f4b18d6) [fixed] day view clicks return the correct slot
+
+
+
 v0.9.0 - Tue, 03 Nov 2015 11:33:38 GMT
 --------------------------------------
 

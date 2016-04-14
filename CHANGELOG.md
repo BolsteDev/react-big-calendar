@@ -1,3 +1,36 @@
+v0.9.8 - Thu, 14 Jan 2016 19:35:07 GMT
+--------------------------------------
+
+- [5fa7012](../../commit/5fa7012) [fixed] Incorrect gutter widths
+
+
+
+v0.9.7 - Sun, 13 Dec 2015 22:01:09 GMT
+--------------------------------------
+
+- [ebf8908](../../commit/ebf8908) [fixed] agenda header display
+
+
+
+v0.9.6 - Sun, 13 Dec 2015 21:39:49 GMT
+--------------------------------------
+
+- [a69600b](../../commit/a69600b) [fixed] Pass correct date to DaySlot for selections.
+- [5ac5c30](../../commit/5ac5c30) [fixed] reset gutter widths before calculations
+
+
+
+v0.9.5 - Wed, 02 Dec 2015 18:09:32 GMT
+--------------------------------------
+
+- [c2e8aa4](../../commit/c2e8aa4) [fixed] accidental breaking change on the localizers
+- [dc90943](../../commit/dc90943) [fixed] some style issues
+- [ea8e085](../../commit/ea8e085) [added] modern globalize support
+- [4b3d3ba](../../commit/4b3d3ba) [fixed] have gutter use culture prop
+- [7922882](../../commit/7922882) [fixed] better gutter width detection
+
+
+
 v0.9.4 - Sun, 29 Nov 2015 02:19:49 GMT
 --------------------------------------
 

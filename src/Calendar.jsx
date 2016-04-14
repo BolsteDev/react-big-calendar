@@ -34,11 +34,19 @@ let now = new Date();
 /**
  * react-big-calendar is full featured Calendar component for managing events and dates. It uses
  * modern `flexbox` for layout making it super responsive and performant. Leaving most of the layout heavy lifting
- * to the browser.
+ * to the browser. __note:__ The default styles use `height: 100%` which means your container must set an explicit
+ * height (feel free to adjust the styles to suit your specific needs).
  *
  * Big Calendar is unopiniated about editing and moving events, prefering to let you implement it in a way that makes
  * the most sense to your app. It also tries not to be prescriptive about your event data structures, just tell it
  * how to find the start and end datetimes and you can pass it whatever you want.
+ *
+ * One thing to note is that, `react-big-calendar` treats event start/end dates as an _exclusive_ range.
+ * which means that the event spans up to, but not including, the end date. In the case
+ * of displaying events on whole days, end dates are rounded _up_ to the next day. So an
+ * event ending on `Apr 8th 12:00:00 am` will not appear on the 8th, whereas one ending
+ * on `Apr 8th 12:01:00 am` will. If you want _inclusive_ ranges consider providing a
+ * function `endAccessor` that returns the end date + 1 day for those events that end at midnight.
  */
 let Calendar = React.createClass({
 
@@ -100,6 +108,17 @@ let Calendar = React.createClass({
      * ```
      */
     onSelectEvent: PropTypes.func,
+
+    /**
+     * Callback fired when dragging a selection in the Time views.
+     *
+     * Returning `false` from the handler will prevent a selection.
+     *
+     * ```js
+     * function ({ start: Date, end: Date }) : boolean
+     * ```
+     */
+    onSelecting: PropTypes.func,
 
     /**
      * An array of built-in view names to allow the calendar to display.
@@ -276,14 +295,14 @@ let Calendar = React.createClass({
      * String messages used throughout the component, override to provide localizations
      */
     messages: PropTypes.shape({
-      allDay: PropTypes.string,
-      previous: PropTypes.string,
-      next: PropTypes.string,
-      today: PropTypes.string,
-      month: PropTypes.string,
-      week: PropTypes.string,
-      day: PropTypes.string,
-      agenda: PropTypes.string,
+      allDay: PropTypes.node,
+      previous: PropTypes.node,
+      next: PropTypes.node,
+      today: PropTypes.node,
+      month: PropTypes.node,
+      week: PropTypes.node,
+      day: PropTypes.node,
+      agenda: PropTypes.node,
       showMore: PropTypes.func
     })
   },

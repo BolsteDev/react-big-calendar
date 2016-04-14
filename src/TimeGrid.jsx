@@ -20,9 +20,12 @@ import { notify } from './utils/helpers';
 import { navigate } from './utils/constants';
 import { accessor as get } from './utils/accessors';
 
-import { inRange, eventSegments, eventLevels, sortEvents, segStyle } from './utils/eventLevels';
+import {
+    inRange, eventSegments, endOfRange
+  , eventLevels, sortEvents, segStyle } from './utils/eventLevels';
 
 const MIN_ROWS = 2;
+
 
 let TimeGrid = React.createClass({
 
@@ -127,7 +130,7 @@ let TimeGrid = React.createClass({
   },
 
   renderEvents(range, events){
-    let { endAccessor, startAccessor, components } = this.props;
+    let { min, max, endAccessor, startAccessor, components } = this.props;
     let today = new Date();
 
     return range.map((date, idx) => {
@@ -140,6 +143,8 @@ let TimeGrid = React.createClass({
       return (
         <DaySlot
           {...this.props }
+          min={dates.merge(date, min)}
+          max={dates.merge(date, max)}
           eventComponent={components.event}
           className={cn({ 'rbc-now': dates.eq(date, today, 'day') })}
           style={segStyle(1, this._slots)}
@@ -152,8 +157,7 @@ let TimeGrid = React.createClass({
   },
 
   renderAllDayEvents(range, levels){
-    let first = range[0]
-      , last = range[range.length - 1];
+    let { first, last } = endOfRange(range);
 
     while (levels.length < MIN_ROWS )
       levels.push([])
@@ -165,6 +169,7 @@ let TimeGrid = React.createClass({
         startAccessor={this.props.startAccessor}
         endAccessor={this.props.endAccessor}
         allDayAccessor={this.props.allDayAccessor}
+        eventPropGetter={this.props.eventPropGetter}
         onSelect={this._selectEvent}
         slots={this._slots}
         key={idx}
@@ -203,20 +208,24 @@ let TimeGrid = React.createClass({
     let isRtl = this.props.rtl;
     let header = this.refs.headerCell;
     let width = this._gutterWidth
+    let gutterCells = [findDOMNode(this.refs.gutter), ...this._gutters]
     let isOverflowing = this.refs.content.scrollHeight > this.refs.content.clientHeight;
 
-    this._gutterWidth = getWidth(findDOMNode(this.refs.gutter));
+    if (!width) {
+      this._gutterWidth = Math.max(...gutterCells.map(getWidth));
 
-    if (width !== this._gutterWidth) {
-      width = this._gutterWidth + 'px';
-      this._gutters.forEach(node => node.style.width = width)
+      if (this._gutterWidth) {
+        width = this._gutterWidth + 'px';
+        gutterCells.forEach(node => node.style.width = width)
+      }
     }
 
     if (isOverflowing) {
       classes.addClass(header, 'rbc-header-overflowing')
       this.refs.headerCell.style[!isRtl ? 'marginLeft' : 'marginRight'] = '';
       this.refs.headerCell.style[isRtl ? 'marginLeft' : 'marginRight'] = scrollbarSize() + 'px';
-    } else {
+    }
+    else {
       classes.removeClass(header, 'rbc-header-overflowing')
     }
   }

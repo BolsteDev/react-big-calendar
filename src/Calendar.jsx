@@ -360,7 +360,6 @@ let Calendar = React.createClass({
             view={view}
             views={names}
             newEventButton={this.props.newEventButton}
-            messages={this.props.messages}
             label={viewLabel(current, view, formats, culture)}
             onViewChange={this._view}
             onNavigate={this._navigate}

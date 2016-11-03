@@ -15,18 +15,17 @@ let Toolbar = React.createClass({
     return (
       <div className='rbc-toolbar'>
         {this.props.newEventButton ? this.props.newEventButton : null}
+        <span className='rbc-btn-group rbc-view-navigation'>
+        {
+          this.viewNamesGroup(messages)
+        }
+        </span>
 
-        <span className='rbc-toolbar-label'>
+        <span className='rbc-toolbar-label rbc-calendar-label'>
           { label }
         </span>
 
-        <span className='rbc-btn-group'>
-          {
-            this.viewNamesGroup(messages)
-          }
-        </span>
-
-        <span className='rbc-btn-group'>
+        <span className='rbc-btn-group rbc-calendar-navigation'>
           <button
             type='button'
             onClick={this.navigate.bind(null, navigate.PREVIOUS)}
